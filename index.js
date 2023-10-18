@@ -1,7 +1,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const { Triangle, Circle, Square } = require('./lib/shapes');
-const { ColorValidator, textCase} = require('./lib/file');
+const { ColorValidator, TextValidator} = require('./lib/file');
 
 // inquirer prompts for name, shape, and colors for outlines and fills
 const promptUser = () => {
@@ -11,14 +11,14 @@ const promptUser = () => {
         name: 'text',
         message: 'Enter up to three characters for the text: ',
         // validate text input to ensure character limit
-        validate: (input) => textCase.validateTextCase(input),
+        validate: (input) => TextValidator.validateTextCase(input),
         },
         {
         type: 'input',
         name: 'textColor',
         message: 'Enter the text color (color name or hex): ',
         // validate color value by checking for common color names and/or hex values
-        validate: (input) => ColorValidator.validateColorForShape(input),
+        validate: (input) => ColorValidator.validateColor(input),
         },
         {
         type: 'list',
@@ -31,14 +31,14 @@ const promptUser = () => {
         name: 'shapeOutline',
         message: 'Enter the outline color (color name or hex): ',
         // validate color value by checking for common color names and/or hex values
-        validate: (input) => ColorValidator.validateColorForShape(input),
+        validate: (input) => ColorValidator.validateColor(input),
         },
         {
         type: 'input',
         name: 'shapeFill',
         message: 'Enter the fill color (color name or hex): ',
         // validate color value by checking for common color names and/or hex values
-        validate: (input) => ColorValidator.validateColorForShape(input),
+        validate: (input) => ColorValidator.validateColor(input),
         },
     ]);
 };
