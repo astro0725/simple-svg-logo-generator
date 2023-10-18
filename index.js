@@ -11,14 +11,14 @@ const promptUser = () => {
         name: 'text',
         message: 'Enter up to three characters for the text: ',
         // validate text input to ensure character limit
-        validate: (input) => textCase.validateTextCase('text', input),
+        validate: (input) => textCase.validateTextCase(input),
         },
         {
         type: 'input',
         name: 'textColor',
         message: 'Enter the text color (color name or hex): ',
         // validate color value by checking for common color names and/or hex values
-        validate: (input) => ColorValidator.validateColorForShape('textColor', input),
+        validate: (input) => ColorValidator.validateColorForShape(input),
         },
         {
         type: 'list',
@@ -30,11 +30,15 @@ const promptUser = () => {
         type: 'input',
         name: 'shapeOutline',
         message: 'Enter the outline color (color name or hex): ',
+        // validate color value by checking for common color names and/or hex values
+        validate: (input) => ColorValidator.validateColorForShape(input),
         },
         {
         type: 'input',
         name: 'shapeFill',
         message: 'Enter the fill color (color name or hex): ',
+        // validate color value by checking for common color names and/or hex values
+        validate: (input) => ColorValidator.validateColorForShape(input),
         },
     ]);
 };
