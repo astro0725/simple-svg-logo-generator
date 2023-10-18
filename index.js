@@ -2,18 +2,22 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const { Triangle, Circle, Square } = require('./lib/shapes');
 
+// inquirer prompts for name, shape, and colors for outlines and fills
 const promptUser = () => {
     return inquirer.prompt([
         {
         type: 'input',
         name: 'text',
         message: 'Enter up to three characters for the text: ',
+        // validate text input to ensure character limit
         validate: (input) => /^[a-zA-Z0-9]{1,3}$/.test(input),
         },
         {
         type: 'input',
         name: 'textColor',
         message: 'Enter the text color (color name or hex): ',
+        // validate color value by checking for common color names and/or hex values
+        validate: (input) => /^(red|blue|green|yellow|magenta|cyan|purple|orange|pink|brown|black|white|gray|grey|(#[0-9A-Fa-f]{3}|#[0-9A-Fa-f]{6}))$/.test(input),
         },
         {
         type: 'list',
@@ -34,6 +38,8 @@ const promptUser = () => {
     ]);
 };
 
+
+// generateSVG function utilizing user inputs
 const generateSVG = (text, textColor, shape, shapeOutline, shapeFill) => {
     // initializing the svg string with size & xml namespace
     let svg = `<svg width="300px" height="200px" viewBox="0 0 15 10" xmlns="http://www.w3.org/2000/svg">`;
@@ -59,6 +65,7 @@ const generateSVG = (text, textColor, shape, shapeOutline, shapeFill) => {
     // closing svg element
     svg += `</svg>`;
 
+    // return svg string
     return svg;
 };
 
