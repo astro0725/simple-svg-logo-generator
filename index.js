@@ -1,6 +1,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const { Triangle, Circle, Square } = require('./lib/shapes');
+const saveIcon = require('./lib/file');
+const ColorValidator = require('./lib/file');
 
 // inquirer prompts for name, shape, and colors for outlines and fills
 const promptUser = () => {
@@ -17,7 +19,7 @@ const promptUser = () => {
         name: 'textColor',
         message: 'Enter the text color (color name or hex): ',
         // validate color value by checking for common color names and/or hex values
-        validate: (input) => /^(red|blue|green|yellow|magenta|cyan|purple|orange|pink|brown|black|white|gray|grey|(#[0-9A-Fa-f]{3}|#[0-9A-Fa-f]{6}))$/.test(input),
+        validate: (input) => ColorValidator.validateColorForShape('textColor', input),
         },
         {
         type: 'list',
@@ -69,7 +71,7 @@ const generateSVG = (text, textColor, shape, shapeOutline, shapeFill) => {
     return svg;
 };
 
-const saveSVGToFile = (text, svg) => {
+const saveIcon = (text, svg) => {
     // generating filename based on the "text" input provided by the user
     const filename = `${text}logo.svg`;
     // Save the SVG to the specified filename
@@ -85,7 +87,7 @@ const init = async () => {
         const userInput = await promptUser();
         // generate svg using user input
         const svg = generateSVG(userInput.text, userInput.textColor, userInput.shape, userInput.shapeOutline, userInput.shapeFill);
-        saveSVGToFile(userInput.text, svg);
+        saveIcon(userInput.text, svg);
         // error handler
     } catch (error) {
         console.error('An error occurred:', error.message);
