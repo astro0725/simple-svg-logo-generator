@@ -1,7 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const { Triangle, Circle, Square } = require('./lib/shapes');
-const saveIcon = require('./lib/file');
 const ColorValidator = require('./lib/file');
 
 // inquirer prompts for name, shape, and colors for outlines and fills
