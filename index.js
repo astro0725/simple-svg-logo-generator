@@ -67,3 +67,17 @@ const saveSVGToFile = (text, svg) => {
     fs.writeFileSync(filename, svg);
     console.log(`Generated ${filename}`);
 };
+
+const init = async () => {
+    try {
+        const userInput = await promptUser();
+        const svg = generateSVG(userInput.text, userInput.textColor, userInput.shape, userInput.shapeOutline, userInput.shapeFill);
+        saveSVGToFile(userInput.text, svg);
+        console.log(`Your SVG named ${userInput.text} has been saved.`)
+        console.log(`Your logo text color is ${userInput.textColor}, your outline color is ${userInput.outlineColor}, and your fill color is ${userInput.fillColor}.`)
+    } catch (error) {
+        console.error('An error occurred:', error.message);
+    }
+};
+
+init();
