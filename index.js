@@ -63,18 +63,22 @@ const generateSVG = (text, textColor, shape, shapeOutline, shapeFill) => {
 };
 
 const saveSVGToFile = (text, svg) => {
-    const filename = `${text}logo.svg`; // Use 'text' input as the filename
+    // generating filename based on the "text" input provided by the user
+    const filename = `${text}logo.svg`;
+    // Save the SVG to the specified filename
     fs.writeFileSync(filename, svg);
-    console.log(`Generated ${filename}`);
+    // console message indicating that your logo has been generated
+    console.log(`Your SVG named ${filename} has been generated.`)
+    console.log(`Your logo text color is ${userInput.textColor}, your outline color is ${userInput.outlineColor}, and your fill color is ${userInput.fillColor}.`)
 };
 
 const init = async () => {
     try {
+        // prompt for user input
         const userInput = await promptUser();
+        // generate svg using user input
         const svg = generateSVG(userInput.text, userInput.textColor, userInput.shape, userInput.shapeOutline, userInput.shapeFill);
         saveSVGToFile(userInput.text, svg);
-        console.log(`Your SVG named ${userInput.text} has been saved.`)
-        console.log(`Your logo text color is ${userInput.textColor}, your outline color is ${userInput.outlineColor}, and your fill color is ${userInput.fillColor}.`)
     } catch (error) {
         console.error('An error occurred:', error.message);
     }
