@@ -79,9 +79,11 @@ const init = async () => {
         // generate svg using user input
         const svg = generateSVG(userInput.text, userInput.textColor, userInput.shape, userInput.shapeOutline, userInput.shapeFill);
         saveSVGToFile(userInput.text, svg);
+        // error handler
     } catch (error) {
         console.error('An error occurred:', error.message);
     }
 };
 
+// initialize app
 init();
