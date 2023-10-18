@@ -81,7 +81,6 @@ const saveIcon = (text, svg) => {
     fs.writeFileSync(filename, svg);
     // console message indicating that your logo has been generated
     console.log(`Your SVG named ${filename} has been generated.`)
-    console.log(`Your logo text color is ${userInput.textColor}, your outline color is ${userInput.outlineColor}, and your fill color is ${userInput.fillColor}.`)
 };
 
 const init = async () => {
