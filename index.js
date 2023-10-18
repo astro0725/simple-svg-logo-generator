@@ -1,7 +1,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const { Triangle, Circle, Square } = require('./lib/shapes');
-const ColorValidator = require('./lib/file');
+const { ColorValidator, textCase} = require('./lib/file');
 
 // inquirer prompts for name, shape, and colors for outlines and fills
 const promptUser = () => {
@@ -11,7 +11,7 @@ const promptUser = () => {
         name: 'text',
         message: 'Enter up to three characters for the text: ',
         // validate text input to ensure character limit
-        validate: (input) => /^[a-zA-Z0-9]{1,3}$/.test(input),
+        validate: (input) => textCase.validateTextCase('text', input),
         },
         {
         type: 'input',
