@@ -62,4 +62,8 @@ const generateSVG = (text, textColor, shape, shapeOutline, shapeFill) => {
     return svg;
 };
 
-runApp();
+const saveSVGToFile = (text, svg) => {
+    const filename = `${text}logo.svg`; // Use 'text' input as the filename
+    fs.writeFileSync(filename, svg);
+    console.log(`Generated ${filename}`);
+};
