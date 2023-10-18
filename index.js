@@ -33,3 +33,33 @@ const promptUser = () => {
         },
     ]);
 };
+
+const generateSVG = (text, textColor, shape, shapeOutline, shapeFill) => {
+    // initializing the svg string with size & xml namespace
+    let svg = `<svg width="300px" height="200px" viewBox="0 0 15 10" xmlns="http://www.w3.org/2000/svg">`;
+
+    // creating object to represent selected shape
+    const shapeObj = {
+        circle: new Circle(),
+        triangle: new Triangle(),
+        square: new Square(),
+    };
+
+    // setting the outline (stroke) and fill collors for the selected shape
+    shapeObj[shape].setStroke(shapeOutline);
+    shapeObj[shape].setFill(shapeFill);
+
+    // getting svg code for the selected shape
+    const shapeSvg = shapeObj[shape].render();
+
+    // adding text to the selected shape
+    svg += `<text x="10" y="20" fill="${textColor}">${text}</text>`;
+    // adding svg code for selected shape
+    svg += shapeSvg;
+    // closing svg element
+    svg += `</svg>`;
+
+    return svg;
+};
+
+runApp();
