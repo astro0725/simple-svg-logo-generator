@@ -18,7 +18,6 @@ const promptUser = () => {
         name: 'textColor',
         message: 'Enter the text color (color name or hex): ',
         // validate color value by checking for common color names and/or hex values
-        validate: (input) => ColorValidator.validateColor(input),
         },
         {
         type: 'list',
