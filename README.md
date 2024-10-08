@@ -46,7 +46,6 @@ Your SVG named ABClogo.svg has been generated.
 ```
 This will create an SVG logo with the text "ABC" in red, with a green shape and a black outline.
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) 
 ## License
-
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) 
 This project is licensed under the MIT license. For more details, see [this link](https://opensource.org/licenses/MIT).
